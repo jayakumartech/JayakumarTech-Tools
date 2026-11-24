@@ -1,5 +1,5 @@
 const tools=[
-['Jaya PDF Studio','ஜெயா PDF ஸ்டுடியோ','Merge, split, compress, rotate and manage PDF files.','PDF இணைத்தல், பிரித்தல், சுருக்குதல் மற்றும் பல.','documents','▤','JayaKumar-PDF-Studio'],
+['JK PDF Studio','ஜெயா PDF ஸ்டுடியோ','Merge, split, compress, rotate and manage PDF files.','PDF இணைத்தல், பிரித்தல், சுருக்குதல் மற்றும் பல.','documents','▤','JayaKumar-PDF-Studio'],
 ['FormFit India','FormFit India','Prepare passport photos and signatures for online forms.','விண்ணப்பங்களுக்கான புகைப்படம் மற்றும் கையொப்பம் தயார் செய்யுங்கள்.','image','▧','JayaKumar-FormFit-India'],
 ['ImageKit Pro','ImageKit Pro','Resize, crop and compress images.','படங்களை resize, crop மற்றும் compress செய்யுங்கள்.','image','▧','JayaKumar-ImageKit'],
 ['Smart QR India','Smart QR India','Create UPI, Wi-Fi, contact and website QR codes.','UPI, Wi-Fi, contact மற்றும் website QR உருவாக்குங்கள்.','business','▦','JayaKumar-Smart-QR'],
