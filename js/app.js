@@ -24,12 +24,14 @@ let lang='en',cat='all';const grid=document.querySelector('#grid'),search=docume
 function render(){let q=search.value.toLowerCase().trim(),items=tools.filter(t=>(cat==='all'||t[4]===cat)&&t.join(' ').toLowerCase().includes(q));grid.innerHTML=items.map(t=>`<article class="card ${['JK PDF Studio','FormFit India'].includes(t[0])?'available':''}" ${t[0]==='JK PDF Studio'?'onclick="location.href=\'tools/jk-pdf-studio/index.html\'" role="link" tabindex="0"':t[0]==='FormFit India'?'onclick="location.href=\'tools/formfit-india/index.html\'" role="link" tabindex="0"':''}><div class="cardhead"><span class="ico">${t[5]}</span><span class="badge">${['JK PDF Studio','FormFit India'].includes(t[0])?(lang==='ta'?'திறக்கவும்':'Open tool'):(lang==='ta'?'விரைவில்':'Coming soon')}</span></div><h3>${t[lang==='ta'?1:0]}</h3><p>${t[lang==='ta'?3:2]}</p><div class="cardfoot">${t[4]} · ${lang==='ta'?'திட்டமிடப்பட்டது':'In roadmap'}</div></article>`).join('');
 grid.querySelectorAll('.card').forEach(card => {
   const title = card.querySelector('h3')?.textContent.trim();
-  if (title === 'ImageKit Pro') {
+  if (['ImageKit Pro', 'Smart QR India'].includes(title)) {
     card.classList.add('available');
     card.setAttribute('role', 'link');
     card.tabIndex = 0;
     card.addEventListener('click', () => {
-      location.href = 'tools/imagekit-pro/index.html';
+      location.href = title === 'ImageKit Pro'
+        ? 'tools/imagekit-pro/index.html'
+        : 'tools/smart-qr-india/index.html';
     });
     const badge = card.querySelector('.badge');
     if (badge) badge.textContent = lang === 'ta' ? 'திறக்கவும்' : 'Open tool';
