@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Generate strong passwords, passphrases and check password strength locally.">
+<title>Secure Password Toolkit | JayakumarTech Tools</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">JK <span>Secure Password Toolkit</span></a><button id="themeBtn" class="ghost" aria-label="Toggle theme">☾</button></header>
+<main class="wrap">
+<section class="hero"><p class="eyebrow">PRIVACY-FIRST SECURITY TOOL</p><h1>Secure Password <em>Toolkit</em></h1><p class="sub">Create strong passwords and memorable passphrases. Everything runs locally in your browser.</p></section>
+<nav class="tabs" aria-label="Password tools"><button class="tab active" data-tab="generator">Password generator</button><button class="tab" data-tab="phrase">Passphrase</button><button class="tab" data-tab="checker">Strength checker</button></nav>
+<section id="generator" class="panel active">
+<div class="panelhead"><div><h2>Password generator</h2><p>Customize length and character types.</p></div><span class="tag">CRYPTO-SECURE</span></div>
+<label class="fieldlabel" for="length">Password length <b id="lengthVal">20</b></label><input id="length" type="range" min="8" max="64" value="20">
+<div class="checks">
+<label><input id="upper" type="checkbox" checked> Uppercase (A–Z)</label><label><input id="lower" type="checkbox" checked> Lowercase (a–z)</label>
+<label><input id="numbers" type="checkbox" checked> Numbers (0–9)</label><label><input id="symbols" type="checkbox" checked> Symbols (!@#$…)</label>
+<label><input id="exclude" type="checkbox"> Exclude similar characters (i, l, 1, L, o, 0)</label>
+</div>
+<div class="result"><input id="password" readonly aria-label="Generated password" value=""><button id="copyPassword" class="primary">Copy</button></div>
+<div class="strengthline"><span id="strengthLabel">Strong</span><div class="meter"><i id="strengthMeter"></i></div><span id="entropy"></span></div>
+<div class="actions"><button id="generate" class="primary">↻ Generate password</button><button id="refresh" class="secondary">New password</button></div>
+<p class="hint" id="genHint" aria-live="polite">Use a unique password for every account.</p>
+</section>
+<section id="phrase" class="panel">
+<div class="panelhead"><div><h2>Memorable passphrase</h2><p>Combine random words for easier recall.</p></div><span class="tag">RANDOM WORDS</span></div>
+<label class="fieldlabel" for="wordCount">Number of words <b id="wordVal">4</b></label><input id="wordCount" type="range" min="3" max="8" value="4">
+<div class="checks"><label><input id="phraseNumbers" type="checkbox" checked> Add a number</label><label><input id="phraseCaps" type="checkbox" checked> Capitalize a word</label><label><input id="phraseSeparator" type="checkbox"> Use hyphens instead of spaces</label></div>
+<div class="result"><input id="phraseOut" readonly aria-label="Generated passphrase"><button id="copyPhrase" class="primary">Copy</button></div>
+<div class="actions"><button id="makePhrase" class="primary">↻ Generate passphrase</button></div>
+<p class="hint">Passphrases are easier to remember. Use enough random words and keep them unique.</p>
+</section>
+<section id="checker" class="panel">
+<div class="panelhead"><div><h2>Password strength checker</h2><p>Check an example password locally. Avoid entering a password you currently use.</p></div><span class="tag">LOCAL ONLY</span></div>
+<div class="result"><input id="checkInput" type="password" autocomplete="off" placeholder="Type a sample password"><button id="toggleEye" class="secondary">Show</button></div>
+<div class="strengthline"><span id="checkLabel">Not checked</span><div class="meter"><i id="checkMeter"></i></div></div>
+<ul id="feedback" class="feedback"><li>Enter a sample password to see guidance.</li></ul>
+</section>
+<section class="notice"><strong>Security note</strong><p>Generated values use your browser’s Web Crypto random number generator. Passwords are not sent to a server or saved by this tool. This checker is a local estimate, not an online breach database check.</p></section>
+<footer>© JayakumarTech Tools · Secure Password Toolkit</footer>
+</main><script src="js/app.js"></script></body></html>
