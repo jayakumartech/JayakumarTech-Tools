@@ -1,0 +1,19 @@
+(()=>{'use strict';
+const $=id=>document.getElementById(id), editor=$('editor'), suggestions=$('suggestions');
+const keys=['அ','ஆ','இ','ஈ','உ','ஊ','எ','ஏ','ஐ','ஒ','ஓ','ஔ','ஃ','க்','ங்','ச்','ஞ்','ட்','ண்','த்','ந்','ப்','ம்','ய்','ர்','ல்','வ்','ழ்','ள்','ற்','ன்','ஜ்','ஷ்','ஸ்','ஹ்','ா','ி','ீ','ு','ூ','ெ','ே','ை','ொ','ோ','ௌ','்','ஸ்ரீ','ௐ',' '];
+let timer=null,lastWord='',candidateList=[];
+function update(){const t=editor.value; $('chars').textContent=[...t].length;$('words').textContent=t.trim()?t.trim().split(/\s+/u).length:0;$('lines').textContent=t? t.split('\n').length:1;}
+function insertAtCursor(text){const a=editor.selectionStart,b=editor.selectionEnd;editor.setRangeText(text,a,b,'end');editor.focus();update();}
+function replaceLastWord(word){const pos=editor.selectionStart;const before=editor.value.slice(0,pos);const m=before.match(/(\S+)$/u);if(!m)return;const start=pos-m[1].length;editor.setRangeText(word,start,pos,'end');editor.focus();update();suggestions.innerHTML='';$('status').textContent='Inserted';}
+async function convertWord(word){if(!word||!$('phonetic').checked)return;lastWord=word;$('status').textContent='Converting…';try{const url='https://inputtools.google.com/request?text='+encodeURIComponent(word)+'&itc=ta-t-i0-und&num=6&cp=0&cs=1&ie=utf-8&oe=utf-8';const r=await fetch(url);if(!r.ok)throw Error('Network');const data=await r.json();if(data[0]!=='SUCCESS')throw Error('No result');candidateList=data[1][0][1]||[];suggestions.innerHTML='';candidateList.slice(0,6).forEach((v,i)=>{const b=document.createElement('button');b.textContent=v;b.type='button';b.addEventListener('click',()=>replaceLastWord(v));suggestions.appendChild(b);});if(candidateList.length){replaceLastWord(candidateList[0]);$('status').textContent='Converted · tap suggestion to change';}else $('status').textContent='No suggestions';}catch(e){$('status').textContent='Offline / service unavailable';}}
+editor.addEventListener('input',()=>{update();if(!$('phonetic').checked)return;clearTimeout(timer);const pos=editor.selectionStart,before=editor.value.slice(0,pos),m=before.match(/([A-Za-z]+)$/);if(m){timer=setTimeout(()=>convertWord(m[1]),450);}});
+editor.addEventListener('keydown',e=>{if(e.key===' '&&$('phonetic').checked){const before=editor.value.slice(0,editor.selectionStart);const m=before.match(/([A-Za-z]+)$/);if(m){e.preventDefault();clearTimeout(timer);convertWord(m[1]).then(()=>insertAtCursor(' '));}}});
+$('phonetic').addEventListener('change',()=>{$('status').textContent=$('phonetic').checked?'Tanglish mode ON':'Virtual keyboard mode';});
+$('clearBtn').onclick=()=>{editor.value='';suggestions.innerHTML='';update();editor.focus();};
+$('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(editor.value);$('status').textContent='Copied to clipboard';}catch{$('status').textContent='Copy not available; select and copy';}};
+$('downloadBtn').onclick=()=>{const blob=new Blob([editor.value],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tamil-text.txt';a.click();URL.revokeObjectURL(a.href);};
+$('selectBtn').onclick=()=>{editor.select();editor.focus();};
+$('backspace').onclick=()=>{const a=editor.selectionStart,b=editor.selectionEnd;if(a!==b)editor.setRangeText('',a,b,'end');else if(a>0){const chars=[...editor.value.slice(0,a)];chars.pop();const start=chars.join('').length;editor.setRangeText('',start,a,'end');}editor.focus();update();};
+const kb=$('keyboard');keys.forEach(k=>{const b=document.createElement('button');b.type='button';b.className='key'+(k==='ஸ்ரீ'||k==='ௐ'?' wide':'');b.textContent=k===' '?'Space':k;b.addEventListener('click',()=>insertAtCursor(k==='Space'?' ':k));kb.appendChild(b);});
+$('themeBtn').onclick=()=>{document.body.classList.toggle('light');$('themeBtn').textContent=document.body.classList.contains('light')?'☀':'☾';};
+$('year').textContent=new Date().getFullYear();update();})();

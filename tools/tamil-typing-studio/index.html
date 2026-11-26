@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827"><meta name="description" content="Tamil Typing Studio - Tamil phonetic typing, virtual keyboard and text utilities.">
+<title>Tamil Typing Studio | JayakumarTech Tools</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html">JK <span>Tamil Typing Studio</span></a><button id="themeBtn" class="iconbtn" aria-label="Toggle theme">☾</button></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">JAYAKUMARTECH TOOLS</div><h1>தமிழ் தட்டச்சு மையம்</h1><p>Type in Tanglish, convert to Tamil, or use the virtual Tamil keyboard.</p></section>
+<section class="panel">
+<div class="toolbar">
+<label class="switchline"><input type="checkbox" id="phonetic" checked> Tanglish → தமிழ்</label>
+<label class="switchline"><input type="checkbox" id="autoSpace" checked> Auto space</label>
+<button id="clearBtn" class="btn ghost">Clear</button>
+</div>
+<div class="editorhead"><label for="editor">உங்கள் உரை / Your text</label><span id="status">Ready</span></div>
+<textarea id="editor" placeholder="தமிழில் எழுத இங்கே தொடங்குங்கள்...&#10;Tanglish: vanakkam → வணக்கம்" spellcheck="false"></textarea>
+<div id="suggestions" class="suggestions" aria-live="polite"></div>
+<div class="stats"><span><b id="chars">0</b> Characters</span><span><b id="words">0</b> Words</span><span><b id="lines">1</b> Lines</span></div>
+<div class="actions"><button id="copyBtn" class="btn primary">Copy text</button><button id="downloadBtn" class="btn">Download .txt</button><button id="selectBtn" class="btn">Select all</button></div>
+</section>
+<section class="panel keyboard-panel">
+<div class="section-head"><div><h2>தமிழ் Keyboard</h2><p>Tap a key to insert it at the cursor.</p></div><button id="backspace" class="btn ghost">⌫ Backspace</button></div>
+<div id="keyboard" class="keyboard"></div>
+<div class="key-help">Tip: Tanglish mode uses an online transliteration service. The virtual keyboard works offline.</div>
+</section>
+<section class="panel help">
+<h2>எப்படி பயன்படுத்துவது?</h2>
+<ol><li>Tanglish mode ON இருந்தால் <b>vanakkam</b> என்று type செய்து space அழுத்துங்கள்.</li><li>கிடைக்கும் Tamil suggestions-ல் சரியான சொல்லைத் தேர்வு செய்யுங்கள்.</li><li>Internet இல்லையெனில் Tanglish mode OFF செய்து virtual keyboard பயன்படுத்துங்கள்.</li></ol>
+<p class="note">Online transliteration requires an internet connection. Text conversion is performed through Google Input Tools; avoid entering confidential information while online.</p>
+</section>
+<footer>© <span id="year"></span> JayakumarTech Tools · Runs in your browser</footer>
+</main>
+<script src="js/app.js"></script>
+</body></html>
