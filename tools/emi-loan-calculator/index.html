@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101827"><title>EMI & Loan Calculator | JayakumarTech Tools</title><link rel="stylesheet" href="css/style.css"></head>
+<body><header class="top"><a class="brand" href="../../index.html">JK <span>EMI & Loan Calculator</span></a><button id="theme" class="btn ghost">☾ Theme</button></header>
+<main class="wrap"><section class="hero"><div class="eyebrow">JAYAKUMARTECH TOOLS</div><h1>EMI & Loan Calculator</h1><p>Calculate monthly EMI, interest cost and a month-by-month repayment schedule.</p></section>
+<section class="layout"><div class="panel inputs">
+<h2>Loan details</h2>
+<div class="field"><label for="amount">Loan amount (₹)</label><input id="amount" type="number" min="1" step="1000" value="500000" inputmode="decimal"></div>
+<div class="field"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0" max="100" step="0.01" value="10.5" inputmode="decimal"></div>
+<div class="field"><label for="tenure">Loan tenure</label><div class="inline"><input id="tenure" type="number" min="1" max="600" value="5" inputmode="numeric"><select id="tenureUnit"><option value="years">Years</option><option value="months">Months</option></select></div></div>
+<div class="field"><label for="startDate">First EMI month</label><input id="startDate" type="month"></div>
+<div class="actions"><button id="calculate" class="btn primary">Calculate EMI</button><button id="reset" class="btn">Reset</button></div>
+<p class="hint">Calculations assume a standard monthly reducing-balance loan with equal monthly payments. Actual lender schedules may differ due to fees, daily interest, rate changes and rounding.</p></div>
+<div class="panel results"><h2>Your repayment summary</h2><div class="hero-emi"><span>Monthly EMI</span><strong id="emi">₹—</strong></div>
+<div class="stats"><div><span>Principal</span><b id="principal">₹—</b></div><div><span>Total interest</span><b id="interest">₹—</b></div><div><span>Total payment</span><b id="total">₹—</b></div><div><span>Loan duration</span><b id="duration">—</b></div></div>
+<div class="bar"><span id="principalBar"></span><span id="interestBar"></span></div><div class="legend"><span>● Principal</span><span>● Interest</span></div>
+<button id="csv" class="btn primary full">Download repayment schedule (CSV)</button></div></section>
+<section class="panel"><div class="section-head"><div><h2>Loan comparison</h2><p>Compare your current loan with another offer.</p></div></div><div class="compare"><div class="field"><label for="rate2">Alternative annual rate (%)</label><input id="rate2" type="number" min="0" max="100" step="0.01" value="9.5"></div><div class="field"><label for="tenure2">Alternative tenure (same unit)</label><input id="tenure2" type="number" min="1" max="600" value="5"></div><button id="compare" class="btn">Compare offer</button></div><div id="comparison" class="comparison muted">Enter an alternative offer and tap Compare.</div></section>
+<section class="panel schedule"><div class="section-head"><div><h2>Amortization schedule</h2><p>Monthly opening balance, EMI split and remaining balance.</p></div><input id="scheduleSearch" class="search" type="search" placeholder="Filter month / year"></div>
+<div class="table-wrap"><table><thead><tr><th>Month</th><th>Opening balance</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Closing balance</th></tr></thead><tbody id="schedule"></tbody></table></div><div class="table-foot" id="scheduleInfo"></div></section>
+<footer>© <span id="year"></span> JayakumarTech Tools · Calculations run locally in your browser</footer></main><script src="js/app.js"></script></body></html>
