@@ -34,7 +34,8 @@ grid.querySelectorAll('.card').forEach(card => {
           'Smart QR India': 'tools/smart-qr-india/index.html',
           'GST Invoice Maker': 'tools/gst-invoice-maker/index.html',
           'Pocket Finance': 'tools/pocket-finance/index.html',
-          'India Tax Calculator': 'tools/india-tax-calculator/index.html'
+          'India Tax Calculator': 'tools/india-tax-calculator/index.html',
+          'VideoKit': 'tools/videokit/index.html'
         })[title];
     });
     const badge = card.querySelector('.badge');

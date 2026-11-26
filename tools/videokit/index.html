@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020"><title>VideoKit Pro | JayakumarTech Tools</title>
+<link rel="stylesheet" href="css/style.css">
+</head><body>
+<header class="topbar"><a class="brand" href="../../index.html"><span class="brandmark">VK</span><span>VideoKit <small>PRO</small></span></a><div class="topactions"><span class="localtag">● Local processing</span><button id="themeBtn" class="iconbtn" title="Toggle theme">◐</button></div></header>
+<main>
+<section class="hero"><div><span class="eyebrow">JAYAKUMARTECH MEDIA SUITE</span><h1>Make every frame<br><em>count.</em></h1><p>A mobile-friendly video workspace for trimming, resizing, styling and exporting clips — right in your browser.</p></div><div class="hero-orb"><div class="orbplay">▶</div><span class="orbtag t1">TRIM</span><span class="orbtag t2">9:16</span><span class="orbtag t3">HD</span></div></section>
+<section class="workspace">
+<div class="sectiontitle"><div><span class="step">01 / MEDIA</span><h2>Import your video</h2></div><span class="muted">MP4 · WebM · MOV*</span></div>
+<div id="dropzone" class="dropzone"><div class="uploadicon">↑</div><b>Drop a video here</b><span>or choose a file from your device</span><label class="btn primary choose">Choose video<input id="file" type="file" accept="video/*"></label><small>*Actual formats depend on browser support.</small></div>
+<div id="mediaArea" class="mediaarea hidden">
+<div class="previewwrap"><video id="video" playsinline controls></video><div class="previewhint">SOURCE PREVIEW</div></div>
+<div class="mediainfo"><div><b id="fileName">No file</b><small id="fileMeta">—</small></div><button id="replaceBtn" class="btn subtle">Replace</button></div>
+<div class="quickstats"><div><small>DURATION</small><b id="durationStat">—</b></div><div><small>RESOLUTION</small><b id="resolutionStat">—</b></div><div><small>FILE SIZE</small><b id="sizeStat">—</b></div><div><small>FORMAT</small><b id="formatStat">—</b></div></div>
+</div>
+</section>
+<section class="workspace">
+<div class="sectiontitle"><div><span class="step">02 / EDIT</span><h2>Shape your clip</h2></div><button id="resetBtn" class="btn subtle">Reset edits</button></div>
+<div class="editgrid">
+<div class="controlcard"><div class="controlhead"><span class="controlicon">✂</span><div><b>Trim video</b><small>Choose the section to export</small></div></div><div class="trimvalues"><label>Start <input id="start" type="number" min="0" step=".1" value="0"></label><label>End <input id="end" type="number" min="0" step=".1" value="0"></label></div><div class="rangegroup"><input id="startRange" type="range" min="0" max="100" value="0"><input id="endRange" type="range" min="0" max="100" value="100"></div><div class="rangefoot"><span id="startLabel">00:00</span><span id="rangeDuration">Full clip</span><span id="endLabel">00:00</span></div></div>
+<div class="controlcard"><div class="controlhead"><span class="controlicon">▣</span><div><b>Canvas & quality</b><small>Set the output frame</small></div></div><label>Aspect ratio<select id="ratio"><option value="original">Original</option><option value="16:9">Landscape · 16:9</option><option value="9:16">Portrait · 9:16</option><option value="1:1">Square · 1:1</option><option value="4:5">Social · 4:5</option></select></label><label>Resolution<select id="resolution"><option value="source">Source size</option><option value="1080">1080p max</option><option value="720">720p max</option><option value="480">480p max</option></select></label><label>Fit mode<select id="fit"><option value="contain">Fit entire video</option><option value="cover">Fill frame (crop edges)</option></select></label></div>
+<div class="controlcard"><div class="controlhead"><span class="controlicon">◷</span><div><b>Playback & audio</b><small>Adjust pace and sound</small></div></div><label>Playback speed<select id="speed"><option value="0.5">0.5× Slow</option><option value="0.75">0.75×</option><option value="1" selected>1× Normal</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2× Fast</option></select></label><label>Audio volume <output id="volumeVal">100%</output><input id="volume" type="range" min="0" max="100" value="100"></label><label class="check"><input id="mute" type="checkbox"> Mute exported clip</label></div>
+<div class="controlcard"><div class="controlhead"><span class="controlicon">✧</span><div><b>Visual adjustments</b><small>Give your clip a look</small></div></div><label>Brightness <output id="brightVal">100%</output><input id="brightness" type="range" min="50" max="150" value="100"></label><label>Contrast <output id="contrastVal">100%</output><input id="contrast" type="range" min="50" max="150" value="100"></label><label>Saturation <output id="satVal">100%</output><input id="saturation" type="range" min="0" max="200" value="100"></label><label>Rotate<select id="rotate"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></label></div>
+<div class="controlcard"><div class="controlhead"><span class="controlicon">T</span><div><b>Text watermark</b><small>Optional overlay on export</small></div></div><label>Watermark text<input id="watermark" type="text" maxlength="40" placeholder="Your channel / brand"></label><label>Position<select id="watermarkPos"><option value="br">Bottom right</option><option value="bl">Bottom left</option><option value="tr">Top right</option><option value="tl">Top left</option><option value="center">Center</option></select></label><label>Text size<select id="watermarkSize"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></label></div>
+<div class="controlcard"><div class="controlhead"><span class="controlicon">▤</span><div><b>Quick actions</b><small>Preview and save a still</small></div></div><button id="previewRange" class="btn secondary full">▶ Preview selected range</button><button id="captureBtn" class="btn subtle full" disabled>▣ Capture current frame</button><a id="frameDownload" class="btn subtle full disabled">↓ Download frame PNG</a><canvas id="frameCanvas"></canvas></div>
+</div>
+</section>
+<section class="workspace exportpanel">
+<div class="sectiontitle"><div><span class="step">03 / EXPORT</span><h2>Render your video</h2></div><span class="exportbadge">ON-DEVICE</span></div>
+<div class="exportrow"><div><b>Ready when you are</b><p id="status">Import a video to unlock export settings.</p></div><button id="exportBtn" class="btn primary" disabled>Export video ↗</button></div>
+<div class="progress hidden" id="progressWrap"><div id="progressBar"></div></div><div class="progressmeta"><span id="progressText"></span><span id="outputInfo">Output: WebM (browser-dependent)</span></div>
+</section>
+<aside class="notice"><b>Important browser limits:</b> Video export uses real-time browser recording and usually creates a WebM file, not MP4. Keep this page open and the screen awake until export finishes. Large/high-resolution files may be slow or fail on some phones. Codec, file type and maximum resolution depend on the browser/device. This tool does not upload your video. No multi-track editing, transitions or guaranteed MP4 encoding.</aside>
+<footer>VideoKit Pro v2.0 · Built for JayakumarTech Tools</footer>
+</main><script src="js/app.js"></script></body></html>
